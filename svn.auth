@@ -1,0 +1,31 @@
+[groups]
+otdel1 = apetrov,bsidorov,vivanov
+otdel2 = apetrov,bsidorov,vivanov,gsokolov
+all_read = dsuvorov,gtarasov,apetrov,bsidorov,vivanov,gsokolov
+
+[/]
+@all_read =  r
+gtarasov =  r
+
+[SA:/]
+dsuvorov =  rw
+bsidorov =  r
+
+[SA:/1]
+vivanov =  r
+
+[ass:/]
+avpetrov =  rw
+gsokolov =  rw
+bsidorov =  rw
+
+[ass:/1/2]
+apetrov =  rw
+dsuvorova =  rw
+
+[app:/]
+dsuvorov =  rw
+apetrov =  rw
+gsokolov =  rw
+bsidorov =  rw
+egorina = r
