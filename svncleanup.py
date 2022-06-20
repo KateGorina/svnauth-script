@@ -34,14 +34,20 @@ def del_user_from_svn():
                             group_users_new += i + ','
                     rights = group_users_new[:-1]
                 if name not in del_name:
-                    # print(name, '==', del_name)
-                    svn_auth_new.write(f"{name} = {rights}\n")
-    shutil.copyfile('./svn.auth', ('svn_auth' + today + '.txt'))  # Бэкапит исходный конфиг перед удалением
+                    # svn_auth_new.write(f"{name} = {rights}\n")
+                    svn_auth_new.write("{} ={}".format(name, rights) + "\n") # использую format, т.к. на сервера старая версия питона, не поддерживает f-строки
+                else:
+                    counter_del += 1    
+    shutil.copyfile('./svn.auth', ('svn_auth' + today))  # Бэкапит исходный конфиг перед удалением
     os.replace('./new_svn.auth', './svn.auth')
-    print(f"Удалены пользователи: {del_name}")
+    # print(f"Удалены пользователи: {del_name}")
+    print("Удалены пользователи: {}".format(del_name))
+    print("Найдено вхождений: {}".format(counter_del))
+    
 
 
-print(f'Удалить:{del_name}?')  # Доп. проверка перед удалением
+# print(f'Удалить:{del_name}?')  # Доп. проверка перед удалением
+print('Удалить:{}?'.format(del_name))  # Доп. проверка перед удалением
 user_answer = input("Введите [yes/no]: ").lower()
 yes = ("yes", "y", "ye")
 
